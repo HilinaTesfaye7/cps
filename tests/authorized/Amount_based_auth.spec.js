@@ -69,8 +69,9 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Rule Engine Rule Engine' }).click();
   await page.getByRole('link', { name: 'Amount - Based Auth Amount -' }).click();
   await page.locator('div').filter({ hasText: 'Amount - Based AuthenticationBack to HomeAmount Based AuthTier 1' }).locator('path').nth(1).click();
-  await page.getByPlaceholder('Max Amount').fill('100000');
+  await page.getByPlaceholder('Max Amount').fill('10000000');
   await page.getByRole('button', { name: 'Update' }).click();
+  await page.waitForTimeout(5000);
 });
 
 

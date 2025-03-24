@@ -69,5 +69,7 @@ test('test', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Sign In' }).click();
   await page.getByRole('button', { name: 'Approve', exact: true }).click();
-  await page.locator('[id="headlessui-dialog-\\:r4\\:"]').getByRole('button', { name: 'Approve' }).click();
+   
+await page.locator('[id="headlessui-dialog-\\:r4\\:"]').getByRole('button', { name: 'Approve' }).click();
+await page.waitForTimeout(5000);
 });
