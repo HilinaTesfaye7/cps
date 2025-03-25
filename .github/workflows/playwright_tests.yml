@@ -49,8 +49,13 @@ jobs:
         run: allure generate allure-results --clean
 
       # Step 7: Upload Allure report as an artifact (optional)
+     # - name: Archive Allure report
+      #  uses: actions/upload-artifact@v3
+       # with:
+        #  name: allure-report
+         # path: allure-report/
       - name: Archive Allure report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: allure-report
           path: allure-report/
