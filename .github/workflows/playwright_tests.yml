@@ -31,8 +31,11 @@ jobs:
         run: npm install
 
       # Step 4: Run Playwright tests
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Run Playwright tests authorized
+        run: npx playwright test tests/authorized/
+
+      - name: Run Playwright tests rejected
+        run: npx playwright test tests/Rejected/
 
       # Step 5: Install Allure CLI
       - name: Install Allure CLI
