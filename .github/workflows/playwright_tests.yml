@@ -54,11 +54,31 @@ jobs:
         with:
           name: allure-report
           path: allure-report/
+    
+    release:
+    name: 🚀 Create GitHub Release
+    needs: build-and-test
+    if: always()  # Ensure the release job runs even if build-and-test fails
+      
+  runs-on: ubuntu-latest
 
-      # Step 8: Publish Allure report (optional)
-      - name: Publish Allure report
-        uses: mikepenz/action-junit-report@v3
-        if: always() # Ensure this step runs even if tests fail
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 📥 Download allure Reports of CPS
+        uses: actions/download-artifact@v4
         with:
-          report_paths: '**/allure-results/*.json'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: allure-reports
+          path: artifacts/
+
+      - name: 🚀 Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v1.0.${{ github.run_number }}
+          name: Serenity Report Release.${{ github.run_number }}
+          body: "Automated release of Serenity reports."
+          draft: false
+          prerelease: false
+          artifacts: "artifacts/serenity-reports.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
