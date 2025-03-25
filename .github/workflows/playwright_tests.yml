@@ -55,12 +55,11 @@ jobs:
           name: allure-report
           path: allure-report/
     
-    release:
+  Release:
     name: 🚀 Create GitHub Release
-    needs: build-and-test
+   # needs: build-and-test
     if: always()  # Ensure the release job runs even if build-and-test fails
-      
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: 📥 Checkout Repository
