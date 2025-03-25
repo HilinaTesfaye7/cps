@@ -1,0 +1,61 @@
+name: Playwright Tests with Allure Report
+
+on:
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+
+  # Trigger the workflow on push or pull request to the main branch
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Use the Node.js version compatible with your project
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run Playwright tests
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      # Step 5: Install Allure CLI
+      - name: Install Allure CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y default-jre
+          npm install -g allure-commandline
+
+      # Step 6: Generate Allure report
+      - name: Generate Allure report
+        run: allure generate allure-results --clean
+
+      # Step 7: Upload Allure report as an artifact (optional)
+      - name: Archive Allure report
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report/
+
+      # Step 8: Publish Allure report (optional)
+      - name: Publish Allure report
+        uses: mikepenz/action-junit-report@v3
+        if: always() # Ensure this step runs even if tests fail
+        with:
+          report_paths: '**/allure-results/*.json'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
