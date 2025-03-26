@@ -77,6 +77,6 @@ test('test', async ({ page }) => {
   await page.getByRole('option', { name: 'CB' }).click();
   await page.getByRole('row', { name: 'Transfer to Other Bank OBTS' }).getByRole('img').click();
   await page.getByPlaceholder('Enter Service Fee Code').click();
-  await page.getByPlaceholder('Enter Service Fee Code').fill('SFO');
+  await page.getByPlaceholder('Enter Service Fee Code').fill('SFOoi');
   await page.getByRole('button', { name: 'Edit Product Code' }).click();
 });

@@ -73,6 +73,7 @@ test('test', async ({ page }) => {
   await page.getByRole('img').nth(2).click();
   await page.getByRole('button', { name: 'Edit Total Cap' }).click();
   await page.getByPlaceholder('Total transfer limit').click();
-  await page.getByPlaceholder('Total transfer limit').fill('1000000000000');
+  await page.getByPlaceholder('Total transfer limit').fill('10000000000000000');
   await page.getByRole('button', { name: 'Update Cap' }).click();
+  await page.waitForTimeout(3000);
 });

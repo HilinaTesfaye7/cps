@@ -1,0 +1,242 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: test
+- Location: C:\Users\ENVY\Documents\cps Automation\tests\authorized\service_fee_edit.spec.js:4:1
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('//button[normalize-space()=\'Add another tier\']')
+
+    at C:\Users\ENVY\Documents\cps Automation\tests\authorized\service_fee_edit.spec.js:81:72
+```
+
+# Page snapshot
+
+```yaml
+- main:
+  - img "Cover"
+  - heading "Dashen Bank Super App Central Dashboard Portal" [level=4]
+  - text: B
+  - paragraph: binim
+  - text: MAKER
+  - img
+  - heading "Welcome Back!" [level=4]
+  - paragraph: Efficiently manage performance, transactions, and all essential settings of the super app in one place.
+  - link "Dashboard Dashboard Get an overview of all essential data, track app performance, and access key metrics.":
+    - button:
+      - img
+    - img "Dashboard"
+    - heading "Dashboard" [level=3]
+    - paragraph: Get an overview of all essential data, track app performance, and access key metrics.
+  - button:
+    - img
+  - img "Customers"
+  - heading "Customers" [level=3]
+  - paragraph: View and manage customer details, keeping essential information organized.
+  - link "Merchants Merchants List of all Super App merchants and their information.":
+    - button:
+      - img
+    - img "Merchants"
+    - heading "Merchants" [level=3]
+    - paragraph: List of all Super App merchants and their information.
+  - link "Transaction Reports Transaction Reports Review and track all transaction details to keep records clear and accurate.":
+    - button:
+      - img
+    - img "Transaction Reports"
+    - heading "Transaction Reports" [level=3]
+    - paragraph: Review and track all transaction details to keep records clear and accurate.
+  - heading "Super App Products" [level=4]
+  - paragraph: Set up and manage in-app products and handle mini-apps.
+  - button "Kazna Kazna Oversee Kazna products and view users with active Kaznas.":
+    - img "Kazna"
+    - heading "Kazna" [level=4]
+    - paragraph: Oversee Kazna products and view users with active Kaznas.
+  - link "Budget Settings Budget Settings Create and manage icons & colors for budget categories on the super app.":
+    - img "Budget Settings"
+    - heading "Budget Settings" [level=4]
+    - paragraph: Create and manage icons & colors for budget categories on the super app.
+  - button "Mini Apps Mini Apps Create and manage the list of mini apps available on the super app.":
+    - img "Mini Apps"
+    - heading "Mini Apps" [level=4]
+    - paragraph: Create and manage the list of mini apps available on the super app.
+  - link "Events And Tickets Events And Tickets Manage events hosted by merchants through the Dashen platform and over see the tickets sold.":
+    - img "Events And Tickets"
+    - heading "Events And Tickets" [level=4]
+    - paragraph: Manage events hosted by merchants through the Dashen platform and over see the tickets sold.
+  - heading "Configurations" [level=4]
+  - paragraph: Configure app rules, set values, manage product codes, and oversee financial institutions.
+  - link "Rule Engine Rule Engine Manage all fee amounts and related settings or configurations within the rule engine.":
+    - img "Rule Engine"
+    - heading "Rule Engine" [level=4]
+    - paragraph: Manage all fee amounts and related settings or configurations within the rule engine.
+  - link "Product Code Product Code Assign codes to different service products available.":
+    - img "Product Code"
+    - heading "Product Code" [level=4]
+    - paragraph: Assign codes to different service products available.
+  - button "Financial Institutions Financial Institutions Manage all financial institutions on the Super App.":
+    - img "Financial Institutions"
+    - heading "Financial Institutions" [level=4]
+    - paragraph: Manage all financial institutions on the Super App.
+  - heading "Bulk User Management" [level=4]
+  - paragraph: Manage bulk users with filters, set permissions and controls, and manage CIFs and accounts.
+  - button "Bulk User Disable Bulk User Disable Filter and disable multiple user accounts in bulk.":
+    - img "Bulk User Disable"
+    - heading "Bulk User Disable" [level=4]
+    - paragraph: Filter and disable multiple user accounts in bulk.
+  - link "Bulk Service Disable Bulk Service Disable manage multiple services within the app.":
+    - img "Bulk Service Disable"
+    - heading "Bulk Service Disable" [level=4]
+    - paragraph: manage multiple services within the app.
+  - link "Unlink Accounts Unlink Accounts Unlink CIFs and view archived CIFs of automatically unlinked accounts.":
+    - img "Unlink Accounts"
+    - heading "Unlink Accounts" [level=4]
+    - paragraph: Unlink CIFs and view archived CIFs of automatically unlinked accounts.
+  - heading "Customer Engagements" [level=4]
+  - paragraph: Send notifications, create ads, and track customer feedback to enhance engagement.
+  - link "Notifications Notifications Create and manage notifications on the Super App and keep users informed.":
+    - img "Notifications"
+    - heading "Notifications" [level=4]
+    - paragraph: Create and manage notifications on the Super App and keep users informed.
+  - link "Adverts Adverts Create and manage adverts on the Super App.":
+    - img "Adverts"
+    - heading "Adverts" [level=4]
+    - paragraph: Create and manage adverts on the Super App.
+  - link "Customer Feedbacks Customer Feedbacks Review feedbacks submitted by customers.":
+    - img "Customer Feedbacks"
+    - heading "Customer Feedbacks" [level=4]
+    - paragraph: Review feedbacks submitted by customers.
+  - heading "CPS Users Administrations" [level=4]
+  - paragraph: Create departments and permission groups, then add and manage users accordingly.
+  - link "Departments Departments Set up and manage departments to group and organize all users efficiently.":
+    - img "Departments"
+    - heading "Departments" [level=4]
+    - paragraph: Set up and manage departments to group and organize all users efficiently.
+  - button "Users Users Filter and disable multiple user accounts in bulk.":
+    - img "Users"
+    - heading "Users" [level=4]
+    - paragraph: Filter and disable multiple user accounts in bulk.
+  - link "Permission Groups Permission Groups Create and manage permissions by setting up permission groups for better control.":
+    - img "Permission Groups"
+    - heading "Permission Groups" [level=4]
+    - paragraph: Create and manage permissions by setting up permission groups for better control.
+  - button "Encryptions Encryptions Create and use encryptions to secure user data and prevent unauthorized access.":
+    - img "Encryptions"
+    - heading "Encryptions" [level=4]
+    - paragraph: Create and use encryptions to secure user data and prevent unauthorized access.
+  - heading "Log" [level=4]
+  - paragraph: View activity logs.
+  - link "Logs Logs See activity logs.":
+    - img "Logs"
+    - heading "Logs" [level=4]
+    - paragraph: See activity logs.
+- region "Notifications alt+T"
+- alert
+```
+
+# Test source
+
+```ts
+   1 |
+   2 | const { test, expect } = require('@playwright/test');
+   3 |
+   4 | test('test', async ({ page }) => {
+   5 |   // Variable to store the OTP
+   6 |   let otp = null;
+   7 |
+   8 |   // Listen for network responses
+   9 |   page.on('response', async (response) => {
+  10 |     const url = response.url(); // Get the URL of the response
+  11 |
+  12 |     // Check if the response URL matches the specific endpoint
+  13 |     if (url.includes('https://sau.eaglelionsystems.com/v1.0/chatbirrapi/cpsauth/otp/request/dashops')) {
+  14 |       console.log(`Response URL: ${url}`);
+  15 |
+  16 |       // Get the response body as JSON
+  17 |       try {
+  18 |         const responseBody = await response.json(); // Parse the response body as JSON
+  19 |         console.log('Response Body:', responseBody);
+  20 |
+  21 |         // Extract the OTP from the response body
+  22 |         if (responseBody.otpcode) {
+  23 |           otp = responseBody.otpcode; // Assuming the OTP is in a field named "otpcode"
+  24 |           console.log(`OTP: ${otp}`);
+  25 |         } else {
+  26 |           console.error('OTP not found in the response body.');
+  27 |         }
+  28 |       } catch (error) {
+  29 |         console.error('Failed to parse response body as JSON:', error);
+  30 |       }
+  31 |     }
+  32 |   });
+  33 |
+  34 |   // Navigate to the login page
+  35 |   await page.goto('https://sau-dbsa.vercel.app');
+  36 |
+  37 |   // Enter the username and request OTP
+  38 |   await page.getByPlaceholder('Enter Your username').click();
+  39 |   await page.getByPlaceholder('Enter Your username').fill('binim');
+  40 |   await page.getByRole('button', { name: 'Get OTP' }).click();
+  41 |
+  42 |   // Wait for the OTP to be captured (adjust timeout as needed)
+  43 |   await page.waitForTimeout(5000); // Wait for 5 seconds
+  44 |
+  45 |   // Check if the OTP was captured
+  46 |   if (!otp) {
+  47 |     throw new Error('user not found');
+  48 |   }
+  49 |
+  50 |   // Split the OTP into individual digits
+  51 |   const otpDigits = otp.split('');
+  52 |   if (otpDigits.length !== 6) {
+  53 |     throw new Error('OTP must be 6 digits long.');
+  54 |   }
+  55 |
+  56 |   // Fill the OTP into the input boxes
+  57 |   for (let i = 0; i < 6; i++) {
+  58 |     const inputSelector = `.rizzui-pin-code-field:nth-child(${i + 1})`;
+  59 |     await page.locator(inputSelector).fill(otpDigits[i]);
+  60 |   }
+  61 |
+  62 |   // Click the "Next" button
+  63 |   await page.getByRole('button', { name: 'Next' }).click();
+  64 |
+  65 |   // Enter the password and sign in
+  66 |   await page.getByPlaceholder('Enter Your Password').click();
+  67 |   await page.getByPlaceholder('Enter Your Password').fill('Admin@7');
+  68 |   await page.getByRole('button', { name: 'Sign In' }).click();
+  69 |
+  70 |   await page.getByRole('link', { name: 'Rule Engine Rule Engine' }).click();
+  71 |   await page.getByRole('link', { name: 'Service Fees Service Fees Set' }).click();
+  72 |   await page.getByPlaceholder('Search service by name').click();
+  73 |   await page.getByPlaceholder('Search service by name').fill('transfer to dashen bank');
+  74 |   await page.getByPlaceholder('Search service by name').press('Enter');
+  75 |   await page.getByRole('button').nth(2).click();
+  76 |   await page.getByRole('row', { name: 'SFC-43464560949018279653' }).getByRole('link').click();
+  77 |   await page.getByRole('img').nth(2).click();
+  78 |   await page.waitForSelector("//a[contains(@class, 'text-primary')]");
+  79 | await page.locator("//a[contains(@class, 'text-primary')]").click();
+  80 |   //await page.getByRole('button', { name: 'Add another tier' }).click();
+> 81 |   await page.locator("//button[normalize-space()='Add another tier']").click();
+     |                                                                        ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  82 |   await page.locator('input[name="tier\\.3\\.max"]').click();
+  83 |   await page.locator('input[name="tier\\.3\\.max"]').fill('5000000000');
+  84 |   await page.locator('input[name="tier\\.3\\.feeAmount"]').click();
+  85 |   await page.locator('input[name="tier\\.3\\.feeAmount"]').fill('1');
+  86 |   await page.getByRole('button', { name: 'Update' }).click();
+  87 | });
+  88 |
+  89 | //a[@class='text-base flex items-center gap-2 text-primary bg-white group hover:text-black w-full p-2 rounded-md cursor-pointer']
+  90 | //a[contains(text(),'Edit')]
+  91 | //a[svg]//path[@fill='#D9D9D9']
+  92 |
+  93 | //button[normalize-space()='Add another tier']
+```

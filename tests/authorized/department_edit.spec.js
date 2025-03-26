@@ -69,8 +69,23 @@ test('test', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Sign In' }).click();
   await page.getByRole('link', { name: 'Departments Departments Set' }).click();
-  await page.getByRole('row', { name: 'Abraham TEST March 13, 2025' }).getByRole('img').click();
+  await page.getByPlaceholder('Search department by name').click();
+  await page.getByPlaceholder('Search department by name').fill('Abraham Testk');
+  await page.getByRole('button').nth(2).click();
+  await page.waitForTimeout(3000);
+  const svgIcon = await page.locator("//div[@class='w-full flex gap-2 items-center justify-center cursor-pointer']/*[name()='svg']");
+
+  // Wait until visible before clicking
+  await svgIcon.waitFor({ state: 'visible' });
+  
+  // Click it
+  await svgIcon.click();
+  
+  
+
   await page.getByPlaceholder('Enter Department Name').click();
-  await page.getByPlaceholder('Enter Department Name').fill('Abraham TESTkrnhj');
+  await page.getByPlaceholder('Enter Department Name').fill('Abraham TESTkk');
   await page.getByRole('button', { name: 'Submit' }).click();
+  await page.waitForTimeout(5000);
 });
+////div[@class='w-full flex gap-2 items-center justify-center cursor-pointer']//*[name()='svg']

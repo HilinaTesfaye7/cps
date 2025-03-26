@@ -1,0 +1,349 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: test
+- Location: C:\Users\ENVY\Documents\cps Automation\tests\authorized\mini_app.spec.js:4:1
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('[id="headlessui-dialog-overlay-\\:r5\\:"]')
+    - locator resolved to <div aria-hidden="true" data-headlessui-state="open" id="headlessui-dialog-overlay-:r5:" class="rizzui-modal-overlay fixed inset-0 cursor-pointer dark:bg-opacity-80 bg-black bg-opacity-40 backdrop-blur-lg"></div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <span class="rizzui-input-container flex items-center peer w-full transition duration-200 px-4 py-2 h-12 rounded-md [&.is-focus]:ring-[0.6px] border border-gray-300 [&_input::placeholder]:text-gray-500 hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-[14px] bg-[#F6F6F6] placeholder:text-[#ADADAD] placeholder:font-normal [&>label>span]:font-medium">…</span> from <div class="pointer-events-none relative w-full transform overflow-hidden transition-all">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <span class="rizzui-input-container flex items-center peer w-full transition duration-200 px-4 py-2 h-12 rounded-md [&.is-focus]:ring-[0.6px] border border-gray-300 [&_input::placeholder]:text-gray-500 hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-[14px] bg-[#F6F6F6] placeholder:text-[#ADADAD] placeholder:font-normal [&>label>span]:font-medium">…</span> from <div class="pointer-events-none relative w-full transform overflow-hidden transition-all">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    23 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <span class="rizzui-input-container flex items-center peer w-full transition duration-200 px-4 py-2 h-12 rounded-md [&.is-focus]:ring-[0.6px] border border-gray-300 [&_input::placeholder]:text-gray-500 hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-[14px] bg-[#F6F6F6] placeholder:text-[#ADADAD] placeholder:font-normal [&>label>span]:font-medium">…</span> from <div class="pointer-events-none relative w-full transform overflow-hidden transition-all">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <form action="#" class="flex flex-col gap-4 items-start w-full">…</form> from <div class="pointer-events-none relative w-full transform overflow-hidden transition-all">…</div> subtree intercepts pointer events
+  4 × retrying click action
+      - waiting 500ms
+      - waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div tabindex="0" role="presentation" class="border bg-zinc-100 border-dashed rounded-md cursor-pointer w-full p-8 flex items-center space-x-3 justify-center">…</div> from <div class="pointer-events-none relative w-full transform overflow-hidden transition-all">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting 500ms
+
+    at C:\Users\ENVY\Documents\cps Automation\tests\authorized\mini_app.spec.js:101:67
+```
+
+# Page snapshot
+
+```yaml
+- main:
+  - heading "Dashen Bank Super App Central Dashboard Portal" [level=4]
+  - text: B
+  - paragraph: binim
+  - text: MAKER
+  - img
+  - img
+  - paragraph: Mini App
+  - button "Add Mini App":
+    - img
+    - text: Add Mini App
+  - link "Back to Home"
+  - paragraph: List of Mini Apps
+  - link "alt HHHH ABC":
+    - img "alt"
+    - paragraph: HHHH
+    - paragraph: ABC
+  - paragraph: ALL
+  - button "Enable"
+  - link "alt Rophnan Sample Event Merchant":
+    - img "alt"
+    - paragraph: Rophnan
+    - paragraph: Sample Event Merchant
+  - paragraph: ALL
+  - button "Enable"
+  - link "alt EOTC EOTC":
+    - img "alt"
+    - paragraph: EOTC
+    - paragraph: EOTC
+  - paragraph: ALL
+  - button "Enable"
+  - link "alt QA App QA TESTER":
+    - img "alt"
+    - paragraph: QA App
+    - paragraph: QA TESTER
+  - paragraph: ALL
+  - button "Enable"
+  - link "alt TestMINIAPP Testmerchant":
+    - img "alt"
+    - paragraph: TestMINIAPP
+    - paragraph: Testmerchant
+  - paragraph: ALL
+  - button "Enable"
+  - link "alt Queens Supermarket ABC":
+    - img "alt"
+    - paragraph: Queens Supermarket
+    - paragraph: ABC
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt Queens Queens":
+    - img "alt"
+    - paragraph: Queens
+    - paragraph: Queens
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt ABC ABC":
+    - img "alt"
+    - paragraph: ABC
+    - paragraph: ABC
+  - paragraph: ALL
+  - button "Enable"
+  - link "alt Ramadan Prayer Sample Event Merchant":
+    - img "alt"
+    - paragraph: Ramadan Prayer
+    - paragraph: Sample Event Merchant
+  - paragraph: IFB
+  - button "Disable"
+  - link "alt Debora Foundation Sample Event Merchant":
+    - img "alt"
+    - paragraph: Debora Foundation
+    - paragraph: Sample Event Merchant
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt Adika Adika":
+    - img "alt"
+    - paragraph: Adika
+    - paragraph: Adika
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt AliExpress AFRICOM Technologies":
+    - img "alt"
+    - paragraph: AliExpress
+    - paragraph: AFRICOM Technologies
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt Fuel payment ABC":
+    - img "alt"
+    - paragraph: Fuel payment
+    - paragraph: ABC
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt Zmall ZMall":
+    - img "alt"
+    - paragraph: Zmall
+    - paragraph: ZMall
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt Digital Equb Hailu Gebretsadik":
+    - img "alt"
+    - paragraph: Digital Equb
+    - paragraph: Hailu Gebretsadik
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt Hajj Pilgrimage EIASC":
+    - img "alt"
+    - paragraph: Hajj Pilgrimage
+    - paragraph: EIASC
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt Qibla Finder Qibla":
+    - img "alt"
+    - paragraph: Qibla Finder
+    - paragraph: Qibla
+  - paragraph: IFB
+  - button "Disable"
+  - link "alt Test APP TEST ZMall":
+    - img "alt"
+    - paragraph: Test APP TEST
+    - paragraph: ZMall
+  - paragraph: ALL
+  - button "Enable"
+  - link "alt GuzoGo GuzoGo":
+    - img "alt"
+    - paragraph: GuzoGo
+    - paragraph: GuzoGo
+  - paragraph: ALL
+  - button "Disable"
+  - link "alt TeleTV TeleTV":
+    - img "alt"
+    - paragraph: TeleTV
+    - paragraph: TeleTV
+  - paragraph: CB
+  - button "Disable"
+- region "Notifications alt+T"
+- alert
+- dialog:
+  - button "Sr Only"
+  - paragraph: Create Mini App
+  - paragraph: Add all the necessary informations about the Mini app and create.
+  - text: App Name *
+  - textbox: ap
+  - text: Mini App Type *
+  - log
+  - text: URL
+  - combobox
+  - text: Type
+  - button "Type ALL":
+    - text: ALL
+    - img
+  - text: Merchant Name
+  - log
+  - text: QA TESTER
+  - combobox
+  - paragraph: "Representative: Abreham"
+  - text: URL *
+  - textbox: www.google.com
+  - checkbox "isThreeClickMiniApp"
+  - img
+  - text: isThreeClickMiniApp
+  - checkbox "isEventMiniApp"
+  - img
+  - text: isEventMiniApp Product Code *
+  - textbox: ert
+  - text: VAT Code *
+  - textbox: ert
+  - text: Service Fee Code *
+  - textbox: ert
+  - text: Mini App Icon
+  - superscript: "*"
+  - img
+  - paragraph: Drop or select file
+  - img "Image Preview"
+  - button "Cancel"
+  - button "Add Mini App"
+```
+
+# Test source
+
+```ts
+   1 |
+   2 | const { test, expect } = require('@playwright/test');
+   3 |
+   4 | test('test', async ({ page }) => {
+   5 |   // Variable to store the OTP
+   6 |   let otp = null;
+   7 |
+   8 |   // Listen for network responses
+   9 |   page.on('response', async (response) => {
+   10 |     const url = response.url(); // Get the URL of the response
+   11 |
+   12 |     // Check if the response URL matches the specific endpoint
+   13 |     if (url.includes('https://sau.eaglelionsystems.com/v1.0/chatbirrapi/cpsauth/otp/request/dashops')) {
+   14 |       console.log(`Response URL: ${url}`);
+   15 |
+   16 |       // Get the response body as JSON
+   17 |       try {
+   18 |         const responseBody = await response.json(); // Parse the response body as JSON
+   19 |         console.log('Response Body:', responseBody);
+   20 |
+   21 |         // Extract the OTP from the response body
+   22 |         if (responseBody.otpcode) {
+   23 |           otp = responseBody.otpcode; // Assuming the OTP is in a field named "otpcode"
+   24 |           console.log(`OTP: ${otp}`);
+   25 |         } else {
+   26 |           console.error('OTP not found in the response body.');
+   27 |         }
+   28 |       } catch (error) {
+   29 |         console.error('Failed to parse response body as JSON:', error);
+   30 |       }
+   31 |     }
+   32 |   });
+   33 |
+   34 |   // Navigate to the login page
+   35 |   await page.goto('https://sau-dbsa.vercel.app');
+   36 |
+   37 |   // Enter the username and request OTP
+   38 |   await page.getByPlaceholder('Enter Your username').click();
+   39 |   await page.getByPlaceholder('Enter Your username').fill('binim');
+   40 |   await page.getByRole('button', { name: 'Get OTP' }).click();
+   41 |
+   42 |   // Wait for the OTP to be captured (adjust timeout as needed)
+   43 |   await page.waitForTimeout(5000); // Wait for 5 seconds
+   44 |
+   45 |   // Check if the OTP was captured
+   46 |   if (!otp) {
+   47 |     throw new Error('OTP was not captured from the network response.');
+   48 |   }
+   49 |
+   50 |   // Split the OTP into individual digits
+   51 |   const otpDigits = otp.split('');
+   52 |   if (otpDigits.length !== 6) {
+   53 |     throw new Error('OTP must be 6 digits long.');
+   54 |   }
+   55 |
+   56 |   // Fill the OTP into the input boxes
+   57 |   for (let i = 0; i < 6; i++) {
+   58 |     const inputSelector = `.rizzui-pin-code-field:nth-child(${i + 1})`;
+   59 |     await page.locator(inputSelector).fill(otpDigits[i]);
+   60 |   }
+   61 |
+   62 |   // Click the "Next" button
+   63 |   await page.getByRole('button', { name: 'Next' }).click();
+   64 |
+   65 |   // Enter the password and sign in
+   66 |   await page.getByPlaceholder('Enter Your Password').click();
+   67 |   await page.getByPlaceholder('Enter Your Password').fill('Admin@7');
+   68 |   
+   69 |
+   70 |   await page.getByRole('button', { name: 'Sign In' }).click();
+   71 |   await page.getByRole('button', { name: 'Mini Apps Mini Apps Create' }).click();
+   72 |   await page.getByRole('link', { name: 'icon Mini Apps' }).click();
+   73 |   await page.getByRole('button', { name: 'Add Mini App' }).click();
+   74 |   await page.locator('div').filter({ hasText: /^App Name\*$/ }).locator('span').nth(1).click();
+   75 |   await page.getByPlaceholder('Enter App Name').fill('ap');
+   76 |   await page.locator('div').filter({ hasText: /^Mini App Type$/ }).nth(3).click();
+   77 |   await page.getByRole('option', { name: 'URL' }).click();
+   78 |   await page.getByRole('button', { name: 'Type Select' }).click();
+   79 |   await page.getByRole('option', { name: 'ALL' }).locator('span').click();
+   80 |   await page.locator('.css-1c8xuuf').click();
+   81 |   await page.getByRole('option', { name: 'QA TESTER' }).click();
+   82 |   await page.getByPlaceholder('Enter URL').click();
+   83 |   await page.getByPlaceholder('Enter URL').fill('www.google.com');
+   84 |   await page.getByPlaceholder('Enter Product Code').click();
+   85 |   await page.getByPlaceholder('Enter Product Code').fill('ert');
+   86 |   await page.getByPlaceholder('Enter VAT Code').click();
+   87 |   await page.getByPlaceholder('Enter VAT Code').fill('ert');
+   88 |   await page.getByPlaceholder('Enter Service Fee Code').click();
+   89 |   await page.getByPlaceholder('Enter Service Fee Code').fill('ert');
+   90 |   await page.locator('path:nth-child(4)').click();
+   91 |
+   92 |   const filePath = 'C:\\Users\\ENVY\\Documents\\cps\\kk.png'; // Use double backslashes but no extra quotes around the path
+   93 | const fileChooserPromise = page.waitForEvent('filechooser');
+   94 | await page.getByText('Drop or select file').click();
+   95 | const fileChooser = await fileChooserPromise;
+   96 | await fileChooser.setFiles(filePath);
+   97 | console.log('✅ Image uploaded successfully');
+   98 |
+   99 |   await page.locator('[id="headlessui-dialog-\\:r4\\:"]').getByRole('button', { name: 'Add Mini App' }).click();
+  100 |   await page.getByPlaceholder('Enter URL').click();
+> 101 |   await page.locator('[id="headlessui-dialog-overlay-\\:r5\\:"]').click();
+      |                                                                   ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  102 |   await page.getByPlaceholder('Enter URL').click();
+  103 |   await page.getByPlaceholder('Enter URL').fill('');
+  104 |   await page.getByPlaceholder('Enter URL').click();
+  105 |   await page.getByPlaceholder('Enter URL').fill('https://sau-dbsa.vercel.app/mini-app');
+  106 |   await page.locator('[id="headlessui-dialog-overlay-\\:r5\\:"]').click();
+  107 | });
+```

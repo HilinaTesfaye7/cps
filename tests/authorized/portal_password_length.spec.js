@@ -76,6 +76,6 @@ test('test', async ({ page }) => {
   await page.locator('div').filter({ hasText: /^Characters$/ }).locator('div').click();
   await page.locator('div').filter({ hasText: /^Characters$/ }).locator('div').first().click();
   await page.locator('input[name="max_password_length"]').click();
-  await page.locator('input[name="max_password_length"]').fill('167');
+  await page.locator('input[name="max_password_length"]').fill('1675');
   await page.getByRole('button', { name: 'Edit Length' }).click();
 });

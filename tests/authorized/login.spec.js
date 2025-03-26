@@ -1,7 +1,12 @@
 
 const { test, expect } = require('@playwright/test');
-
+const { allure } = require('allure-playwright');
 test('test', async ({ page }) => {
+  allure.severity('critical');
+  allure.epic('Authentication');
+  allure.feature('Login');
+
+
   // Variable to store the OTP
   let otp = null;
 

@@ -67,8 +67,13 @@ test('test', async ({ page }) => {
   await page.getByPlaceholder('Enter Your Password').fill('Admin@7');
   await page.getByRole('button', { name: 'Sign In' }).click();
 
-  await page.getByRole('button', { name: 'Reject', exact: true }).click();
-  await page.getByPlaceholder('Screen reader only').click();
-  await page.getByPlaceholder('Screen reader only').fill('dhdh');
-  await page.locator('[id="headlessui-dialog-\\:r8\\:"]').getByRole('button', { name: 'Reject' }).click();
+  await page.getByPlaceholder('Search by customer ID, phone').click();
+  await page.getByPlaceholder('Search by customer ID, phone').fill('UPDATE_PASSWORD_RULE');
+  await page.getByPlaceholder('Search by customer ID, phone').press('Enter');
+  await page.waitForTimeout(3000); 
+  await page.locator("(//button[text()='Reject'])[1]").click();
+  await page.getByPlaceholder('Screen reader only').fill('jok');
+  await page.waitForTimeout(3000); 
+  await page.locator("//button[@type='submit']").click();
+  await page.waitForTimeout(3000);
 });

@@ -1,0 +1,343 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: test
+- Location: C:\Users\ENVY\Documents\cps Automation\tests\authorized\miniapp_merchet.spec.js:4:1
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('[id="headlessui-dialog-\\:r10\\:"] div').filter({ hasText: /^Bank Account$/ }).locator('span')
+
+    at C:\Users\ENVY\Documents\cps Automation\tests\authorized\miniapp_merchet.spec.js:81:118
+```
+
+# Page snapshot
+
+```yaml
+- main:
+  - heading "Dashen Bank Super App Central Dashboard Portal" [level=4]
+  - text: B
+  - paragraph: binim
+  - text: MAKER
+  - img
+  - img
+  - paragraph: Mini App Merchant
+  - button "Create Merchant":
+    - img
+    - text: Create Merchant
+  - link "Back to Home"
+  - img
+  - textbox
+  - button:
+    - img
+  - table:
+    - rowgroup:
+      - row "Merchant Code Merchant Name Representative Name Phone Number Email Bank Account Create Date Action":
+        - columnheader "Merchant Code"
+        - columnheader "Merchant Name"
+        - columnheader "Representative Name"
+        - columnheader "Phone Number"
+        - columnheader "Email"
+        - columnheader "Bank Account"
+        - columnheader "Create Date"
+        - columnheader "Action"
+    - rowgroup:
+      - row "164743 QA TESTER Abreham +251915992013 abrish2082@gmail.com 10001000 March 15, 2025":
+        - cell "164743":
+          - paragraph: "164743"
+        - cell "QA TESTER":
+          - paragraph: QA TESTER
+        - cell "Abreham":
+          - paragraph: Abreham
+        - cell "+251915992013":
+          - paragraph: "+251915992013"
+        - cell "abrish2082@gmail.com":
+          - paragraph: abrish2082@gmail.com
+        - cell "10001000":
+          - paragraph: "10001000"
+        - cell "March 15, 2025":
+          - paragraph: March 15, 2025
+        - cell:
+          - img
+      - row "797241 abebe representa +251965432198 merchant@gmai.com 5100987654433 March 14, 2025":
+        - cell "797241":
+          - paragraph: "797241"
+        - cell "abebe":
+          - paragraph: abebe
+        - cell "representa":
+          - paragraph: representa
+        - cell "+251965432198":
+          - paragraph: "+251965432198"
+        - cell "merchant@gmai.com":
+          - paragraph: merchant@gmai.com
+        - cell "5100987654433":
+          - paragraph: "5100987654433"
+        - cell "March 14, 2025":
+          - paragraph: March 14, 2025
+        - cell:
+          - img
+      - row "370902 TestMerchant for edit TesteEDIT +251989898989 ryp91961@bcooq.com 5001001007019 March 13, 2025":
+        - cell "370902":
+          - paragraph: "370902"
+        - cell "TestMerchant for edit":
+          - paragraph: TestMerchant for edit
+        - cell "TesteEDIT":
+          - paragraph: TesteEDIT
+        - cell "+251989898989":
+          - paragraph: "+251989898989"
+        - cell "ryp91961@bcooq.com":
+          - paragraph: ryp91961@bcooq.com
+        - cell "5001001007019":
+          - paragraph: "5001001007019"
+        - cell "March 13, 2025":
+          - paragraph: March 13, 2025
+        - cell:
+          - img
+      - row "536233 Testmerchant TestMerchant +251969437506 tjy91338@bcooq.com 2900465282211 March 13, 2025":
+        - cell "536233":
+          - paragraph: "536233"
+        - cell "Testmerchant":
+          - paragraph: Testmerchant
+        - cell "TestMerchant":
+          - paragraph: TestMerchant
+        - cell "+251969437506":
+          - paragraph: "+251969437506"
+        - cell "tjy91338@bcooq.com":
+          - paragraph: tjy91338@bcooq.com
+        - cell "2900465282211":
+          - paragraph: "2900465282211"
+        - cell "March 13, 2025":
+          - paragraph: March 13, 2025
+        - cell:
+          - img
+      - row "686122 testminiapp merchant forXYZ +251920347323 qol75132@bcooq.com 2900465282211 March 13, 2025":
+        - cell "686122":
+          - paragraph: "686122"
+        - cell "testminiapp merchant":
+          - paragraph: testminiapp merchant
+        - cell "forXYZ":
+          - paragraph: forXYZ
+        - cell "+251920347323":
+          - paragraph: "+251920347323"
+        - cell "qol75132@bcooq.com":
+          - paragraph: qol75132@bcooq.com
+        - cell "2900465282211":
+          - paragraph: "2900465282211"
+        - cell "March 13, 2025":
+          - paragraph: March 13, 2025
+        - cell:
+          - img
+      - row "797781 ABC Helen Tigistu +251933187474 helentigistu2@gmail.com 0001001002007 March 13, 2025":
+        - cell "797781":
+          - paragraph: "797781"
+        - cell "ABC":
+          - paragraph: ABC
+        - cell "Helen Tigistu":
+          - paragraph: Helen Tigistu
+        - cell "+251933187474":
+          - paragraph: "+251933187474"
+        - cell "helentigistu2@gmail.com":
+          - paragraph: helentigistu2@gmail.com
+        - cell "0001001002007":
+          - paragraph: "0001001002007"
+        - cell "March 13, 2025":
+          - paragraph: March 13, 2025
+        - cell:
+          - img
+      - row "390868 tewodros tewodros +251913034601 teddysh@gmail.com 507210002516 March 12, 2025":
+        - cell "390868":
+          - paragraph: "390868"
+        - cell "tewodros":
+          - paragraph: tewodros
+        - cell "tewodros":
+          - paragraph: tewodros
+        - cell "+251913034601":
+          - paragraph: "+251913034601"
+        - cell "teddysh@gmail.com":
+          - paragraph: teddysh@gmail.com
+        - cell "507210002516":
+          - paragraph: "507210002516"
+        - cell "March 12, 2025":
+          - paragraph: March 12, 2025
+        - cell:
+          - img
+      - row "700098 Queens Bersufekad Getachew +251933030116 bersufekad@eaglelionsystems.com 5020917312031 March 6, 2025":
+        - cell "700098":
+          - paragraph: "700098"
+        - cell "Queens":
+          - paragraph: Queens
+        - cell "Bersufekad Getachew":
+          - paragraph: Bersufekad Getachew
+        - cell "+251933030116":
+          - paragraph: "+251933030116"
+        - cell "bersufekad@eaglelionsystems.com":
+          - paragraph: bersufekad@eaglelionsystems.com
+        - cell "5020917312031":
+          - paragraph: "5020917312031"
+        - cell "March 6, 2025":
+          - paragraph: March 6, 2025
+        - cell:
+          - img
+      - row "424034 EOTC EOTC +251933030116 BERSUFEKAD@EAGLELIONSYSTEMS.COM 5020917312031 March 5, 2025":
+        - cell "424034":
+          - paragraph: "424034"
+        - cell "EOTC":
+          - paragraph: EOTC
+        - cell "EOTC":
+          - paragraph: EOTC
+        - cell "+251933030116":
+          - paragraph: "+251933030116"
+        - cell "BERSUFEKAD@EAGLELIONSYSTEMS.COM":
+          - paragraph: BERSUFEKAD@EAGLELIONSYSTEMS.COM
+        - cell "5020917312031":
+          - paragraph: "5020917312031"
+        - cell "March 5, 2025":
+          - paragraph: March 5, 2025
+        - cell:
+          - img
+      - row "983113 kmkm kkmkm +251900000000 a@gmail.co 0000000000000 February 28, 2025":
+        - cell "983113":
+          - paragraph: "983113"
+        - cell "kmkm":
+          - paragraph: kmkm
+        - cell "kkmkm":
+          - paragraph: kkmkm
+        - cell "+251900000000":
+          - paragraph: "+251900000000"
+        - cell "a@gmail.co":
+          - paragraph: a@gmail.co
+        - cell "0000000000000":
+          - paragraph: "0000000000000"
+        - cell "February 28, 2025":
+          - paragraph: February 28, 2025
+        - cell:
+          - img
+  - text: "Rows per page:"
+  - button "10":
+    - text: "10"
+    - img
+  - list:
+    - listitem "Previous Page":
+      - img
+    - listitem "1"
+    - listitem "Next Page":
+      - img
+- region "Notifications alt+T"
+- alert
+- dialog:
+  - button "Sr Only"
+  - paragraph: Create Merchant
+  - paragraph: Add all the necessary informations and create Mini app merchant.
+  - text: Merchant Name
+  - textbox: muzyn
+  - text: Merchant Representative Name
+  - textbox: muzyn
+  - text: Phone Number
+  - img "flag"
+  - text: "+251"
+  - spinbutton "flag +251": "934475844"
+  - text: Email
+  - textbox: feti@gmail.com
+  - text: Bank Account
+  - spinbutton
+  - button "Cancel"
+  - button "Add Merchant" [disabled]
+```
+
+# Test source
+
+```ts
+   1 |
+   2 | const { test, expect } = require('@playwright/test');
+   3 |
+   4 | test('test', async ({ page }) => {
+   5 |   // Variable to store the OTP
+   6 |   let otp = null;
+   7 |
+   8 |   // Listen for network responses
+   9 |   page.on('response', async (response) => {
+  10 |     const url = response.url(); // Get the URL of the response
+  11 |
+  12 |     // Check if the response URL matches the specific endpoint
+  13 |     if (url.includes('https://sau.eaglelionsystems.com/v1.0/chatbirrapi/cpsauth/otp/request/dashops')) {
+  14 |       console.log(`Response URL: ${url}`);
+  15 |
+  16 |       // Get the response body as JSON
+  17 |       try {
+  18 |         const responseBody = await response.json(); // Parse the response body as JSON
+  19 |         console.log('Response Body:', responseBody);
+  20 |
+  21 |         // Extract the OTP from the response body
+  22 |         if (responseBody.otpcode) {
+  23 |           otp = responseBody.otpcode; // Assuming the OTP is in a field named "otpcode"
+  24 |           console.log(`OTP: ${otp}`);
+  25 |         } else {
+  26 |           console.error('OTP not found in the response body.');
+  27 |         }
+  28 |       } catch (error) {
+  29 |         console.error('Failed to parse response body as JSON:', error);
+  30 |       }
+  31 |     }
+  32 |   });
+  33 |
+  34 |   // Navigate to the login page
+  35 |   await page.goto('https://sau-dbsa.vercel.app');
+  36 |
+  37 |   // Enter the username and request OTP
+  38 |   await page.getByPlaceholder('Enter Your username').click();
+  39 |   await page.getByPlaceholder('Enter Your username').fill('binim');
+  40 |   await page.getByRole('button', { name: 'Get OTP' }).click();
+  41 |
+  42 |   // Wait for the OTP to be captured (adjust timeout as needed)
+  43 |   await page.waitForTimeout(5000); // Wait for 5 seconds
+  44 |
+  45 |   // Check if the OTP was captured
+  46 |   if (!otp) {
+  47 |     throw new Error('user not found');
+  48 |   }
+  49 |
+  50 |   // Split the OTP into individual digits
+  51 |   const otpDigits = otp.split('');
+  52 |   if (otpDigits.length !== 6) {
+  53 |     throw new Error('OTP must be 6 digits long.');
+  54 |   }
+  55 |
+  56 |   // Fill the OTP into the input boxes
+  57 |   for (let i = 0; i < 6; i++) {
+  58 |     const inputSelector = `.rizzui-pin-code-field:nth-child(${i + 1})`;
+  59 |     await page.locator(inputSelector).fill(otpDigits[i]);
+  60 |   }
+  61 |
+  62 |   // Click the "Next" button
+  63 |   await page.getByRole('button', { name: 'Next' }).click();
+  64 |
+  65 |   // Enter the password and sign in
+  66 |   await page.getByPlaceholder('Enter Your Password').click();
+  67 |   await page.getByPlaceholder('Enter Your Password').fill('Admin@7');
+  68 |   await page.getByRole('button', { name: 'Sign In' }).click();
+  69 |
+  70 |   await page.getByRole('button', { name: 'Mini Apps Mini Apps Create' }).click();
+  71 |   await page.getByRole('link', { name: 'icon Mini App Merchants' }).click();
+  72 |   await page.getByRole('button', { name: 'Create Merchant' }).click();
+  73 |   await page.getByPlaceholder('Enter Merchant Name').click();
+  74 |   await page.getByPlaceholder('Enter Merchant Name').fill('muzyn');
+  75 |   await page.getByPlaceholder('Enter Merchant Representative').click();
+  76 |   await page.getByPlaceholder('Enter Merchant Representative').fill('muzyn');
+  77 |   await page.getByRole('spinbutton', { name: 'flag +' }).click();
+  78 |   await page.getByRole('spinbutton', { name: 'flag +' }).fill('934475844');
+  79 |   await page.getByPlaceholder('Enter Email').click();
+  80 |   await page.getByPlaceholder('Enter Email').fill('feti@gmail.com');
+> 81 |   await page.locator('[id="headlessui-dialog-\\:r10\\:"] div').filter({ hasText: /^Bank Account$/ }).locator('span').click();
+     |                                                                                                                      ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  82 |   await page.getByPlaceholder('Enter Bank Account').fill('10008790055');
+  83 |   await page.locator('[id="headlessui-dialog-overlay-\\:r11\\:"]').click();
+  84 | });
+```

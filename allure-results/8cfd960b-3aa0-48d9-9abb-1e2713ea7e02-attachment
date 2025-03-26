@@ -1,0 +1,61 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: test
+- Location: C:\Users\ENVY\Documents\cps Automation\tests\authorized\merchant_edit.spec.js:3:5
+
+# Error details
+
+```
+Error: locator.click: Test ended.
+Call log:
+  - waiting for locator('.rizzui-pin-code-field').first()
+
+    at C:\Users\ENVY\Documents\cps Automation\tests\authorized\merchant_edit.spec.js:11:56
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '@playwright/test';
+   2 |
+   3 | test('test', async ({ page }) => {
+   4 |   await page.goto('https://sau-dbsa.vercel.app/auth/signin?callbackUrl=%2Fmerchants%2Freject%2F67de16ee6c60850a40d5c3ef');
+   5 |   await page.locator('span').first().click();
+   6 |   await page.getByRole('textbox', { name: 'Get OTP' }).fill('binim');
+   7 |   await page.getByText('LoginWelcome to Dashen bank centeral portal service!UsernameGet OTPOTP').click({
+   8 |     button: 'right'
+   9 |   });
+  10 |   await page.getByRole('button', { name: 'Get OTP' }).click();
+> 11 |   await page.locator('.rizzui-pin-code-field').first().click();
+     |                                                        ^ Error: locator.click: Test ended.
+  12 |   await page.locator('input:nth-child(6)').click();
+  13 |   await page.getByRole('button', { name: 'Next' }).click();
+  14 |   await page.locator('span').nth(1).click();
+  15 |   await page.getByRole('textbox', { name: 'Password' }).fill('Admin@7');
+  16 |   await page.getByRole('button').filter({ hasText: /^$/ }).click();
+  17 |   await page.getByRole('button', { name: 'Sign In' }).click();
+  18 |   await page.getByRole('link', { name: 'Merchants Merchants List of' }).click();
+  19 |   await page.getByPlaceholder('Search...').click();
+  20 |   await page.getByPlaceholder('Search...').fill('cu');
+  21 |   await page.getByPlaceholder('Search...').press('Enter');
+  22 |   await page.getByRole('button').nth(3).click();
+  23 |   await page.getByRole('link').nth(3).click();
+  24 |   await page.locator('div').filter({ hasText: /^Merchant Name$/ }).locator('span').click();
+  25 |   await page.getByPlaceholder('Business Name').fill('cuuu');
+  26 |   await page.getByPlaceholder('Zone').click();
+  27 |   await page.getByPlaceholder('Zone').fill('12');
+  28 |   await page.locator('div').filter({ hasText: /^Kebele$/ }).locator('span').click();
+  29 |   await page.getByPlaceholder('Kebele').fill('15');
+  30 |   await page.locator('.css-1c8xuuf').first().click();
+  31 |   await page.getByRole('option', { name: 'Clothing Stores' }).click();
+  32 |   await page.locator('.css-18is6bn-control > .css-hlgwow > .css-1c8xuuf').first().click();
+  33 |   await page.getByRole('option', { name: 'Women’s Accessory and' }).click();
+  34 |   await page.getByRole('button', { name: 'Save' }).click();
+  35 | });
+```

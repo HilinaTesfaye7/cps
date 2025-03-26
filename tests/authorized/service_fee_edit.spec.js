@@ -75,11 +75,28 @@ test('test', async ({ page }) => {
   await page.getByRole('button').nth(2).click();
   await page.getByRole('row', { name: 'SFC-43464560949018279653' }).getByRole('link').click();
   await page.getByRole('img').nth(2).click();
-  await page.getByRole('link', { name: 'Edit' }).click();
-  await page.getByRole('button', { name: 'Add another tier' }).click();
-  await page.locator('input[name="tier\\.3\\.max"]').click();
-  await page.locator('input[name="tier\\.3\\.max"]').fill('500000000');
-  await page.locator('input[name="tier\\.3\\.feeAmount"]').click();
-  await page.locator('input[name="tier\\.3\\.feeAmount"]').fill('1');
+  await page.waitForSelector("//a[contains(@class, 'text-primary')]");
+await page.locator("//a[contains(@class, 'text-primary')]").click();
+//const count = await page.locator("//button[contains(., 'Add another tier')]").count();
+//console.log(`Found ${count} buttons.`);
+
+ // await page.locator("//button[normalize-space()='Add another tier']").click();
+  
+
+  await page.waitForTimeout(5000);
+  await page.locator("//input[@name='tier.3.max']").click();
+  await page.waitForTimeout(5000);
+  await page.locator('input[name="tier\\.3\\.max"]').fill('5000000000');
+  await page.locator("//input[@name='tier.3.feeAmount']").click();
+  await page.locator("//input[@name='tier.3.feeAmount']").fill('1');
   await page.getByRole('button', { name: 'Update' }).click();
+  await page.waitForTimeout(5000);
 });
+
+//a[@class='text-base flex items-center gap-2 text-primary bg-white group hover:text-black w-full p-2 rounded-md cursor-pointer']
+//a[contains(text(),'Edit')]
+//a[svg]//path[@fill='#D9D9D9']
+
+//button[normalize-space()='Add another tier']
+//input[@name='tier.3.max']
+//input[@name='tier.3.feeAmount']

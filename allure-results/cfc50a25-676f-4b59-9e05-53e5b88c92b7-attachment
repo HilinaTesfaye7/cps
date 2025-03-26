@@ -1,0 +1,309 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: test
+- Location: C:\Users\ENVY\Documents\cps Automation\tests\authorized\user_cbs.spec.js:4:1
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole('button', { name: 'Disable' })
+
+    at C:\Users\ENVY\Documents\cps Automation\tests\authorized\user_cbs.spec.js:76:55
+```
+
+# Page snapshot
+
+```yaml
+- main:
+  - heading "Dashen Bank Super App Central Dashboard Portal" [level=4]
+  - text: B
+  - paragraph: binim
+  - text: MAKER
+  - img
+  - img
+  - paragraph: Branch Users
+  - link "Back to Home"
+  - heading "Branch Users" [level=5]
+  - paragraph: Lists of users to manage things with different roles.
+  - link "Add Branch User":
+    - button "Add Branch User":
+      - img
+      - text: Add Branch User
+  - button:
+    - text: Select status
+    - img
+  - textbox "Search by username, name, phone number, branch code"
+  - button:
+    - img
+  - button "Select status":
+    - text: Select status
+    - img
+  - table:
+    - rowgroup:
+      - row "User ID Branch Code Username Full Name Phone Number Role Enable/Disable":
+        - columnheader "User ID"
+        - columnheader "Branch Code"
+        - columnheader "Username"
+        - columnheader "Full Name"
+        - columnheader "Phone Number"
+        - columnheader "Role"
+        - columnheader "Enable/Disable"
+    - rowgroup:
+      - row "6144523130137 000 testUsername test username +251911111111 MAKER":
+        - cell "6144523130137":
+          - paragraph: "6144523130137"
+        - cell "000":
+          - paragraph: "000"
+        - cell "testUsername":
+          - paragraph: testUsername
+        - cell "test username":
+          - paragraph: test username
+        - cell "+251911111111":
+          - paragraph: "+251911111111"
+        - cell "MAKER":
+          - paragraph: MAKER
+        - cell:
+          - img
+      - row "3612331166423 000 coco1 hilina +251934475844 CHECKER":
+        - cell "3612331166423":
+          - paragraph: "3612331166423"
+        - cell "000":
+          - paragraph: "000"
+        - cell "coco1":
+          - paragraph: coco1
+        - cell "hilina":
+          - paragraph: hilina
+        - cell "+251934475844":
+          - paragraph: "+251934475844"
+        - cell "CHECKER":
+          - paragraph: CHECKER
+        - cell
+      - row "18990024378655 002 cyberuser2 cyber user 2 +251955329206 CHECKER":
+        - cell "18990024378655":
+          - paragraph: "18990024378655"
+        - cell "002":
+          - paragraph: "002"
+        - cell "cyberuser2":
+          - paragraph: cyberuser2
+        - cell "cyber user 2":
+          - paragraph: cyber user 2
+        - cell "+251955329206":
+          - paragraph: "+251955329206"
+        - cell "CHECKER":
+          - paragraph: CHECKER
+        - cell:
+          - img
+      - row "132253488851557 000 huletc Checker User +251991014552 CHECKER":
+        - cell "132253488851557":
+          - paragraph: "132253488851557"
+        - cell "000":
+          - paragraph: "000"
+        - cell "huletc":
+          - paragraph: huletc
+        - cell "Checker User":
+          - paragraph: Checker User
+        - cell "+251991014552":
+          - paragraph: "+251991014552"
+        - cell "CHECKER":
+          - paragraph: CHECKER
+        - cell:
+          - img
+      - row "2354197386525 000 btest b0 tester +251962884745 MAKER":
+        - cell "2354197386525":
+          - paragraph: "2354197386525"
+        - cell "000":
+          - paragraph: "000"
+        - cell "btest":
+          - paragraph: btest
+        - cell "b0 tester":
+          - paragraph: b0 tester
+        - cell "+251962884745":
+          - paragraph: "+251962884745"
+        - cell "MAKER":
+          - paragraph: MAKER
+        - cell:
+          - img
+      - row "132233626881883 000 huletm Maker User +251911554491 MAKER":
+        - cell "132233626881883":
+          - paragraph: "132233626881883"
+        - cell "000":
+          - paragraph: "000"
+        - cell "huletm":
+          - paragraph: huletm
+        - cell "Maker User":
+          - paragraph: Maker User
+        - cell "+251911554491":
+          - paragraph: "+251911554491"
+        - cell "MAKER":
+          - paragraph: MAKER
+        - cell:
+          - img
+      - row "89924780098349 000 cyberUser4 Cyber User 4 +251070170260 CHECKER":
+        - cell "89924780098349":
+          - paragraph: "89924780098349"
+        - cell "000":
+          - paragraph: "000"
+        - cell "cyberUser4":
+          - paragraph: cyberUser4
+        - cell "Cyber User 4":
+          - paragraph: Cyber User 4
+        - cell "+251070170260":
+          - paragraph: "+251070170260"
+        - cell "CHECKER":
+          - paragraph: CHECKER
+        - cell:
+          - img
+      - row "89748055891773 000 CyberUser3 Cyber User 3 +251911572578 MAKER":
+        - cell "89748055891773":
+          - paragraph: "89748055891773"
+        - cell "000":
+          - paragraph: "000"
+        - cell "CyberUser3":
+          - paragraph: CyberUser3
+        - cell "Cyber User 3":
+          - paragraph: Cyber User 3
+        - cell "+251911572578":
+          - paragraph: "+251911572578"
+        - cell "MAKER":
+          - paragraph: MAKER
+        - cell:
+          - img
+      - row "3119145451973 000 coco Hilina +251983744700 MAKER":
+        - cell "3119145451973":
+          - paragraph: "3119145451973"
+        - cell "000":
+          - paragraph: "000"
+        - cell "coco":
+          - paragraph: coco
+        - cell "Hilina":
+          - paragraph: Hilina
+        - cell "+251983744700":
+          - paragraph: "+251983744700"
+        - cell "MAKER":
+          - paragraph: MAKER
+        - cell:
+          - img
+      - row "305289216225973 000 btest7 btest7 checker +251714540473 CHECKER":
+        - cell "305289216225973":
+          - paragraph: "305289216225973"
+        - cell "000":
+          - paragraph: "000"
+        - cell "btest7":
+          - paragraph: btest7
+        - cell "btest7 checker":
+          - paragraph: btest7 checker
+        - cell "+251714540473":
+          - paragraph: "+251714540473"
+        - cell "CHECKER":
+          - paragraph: CHECKER
+        - cell:
+          - img
+  - text: "Rows per page:"
+  - button "10":
+    - text: "10"
+    - img
+  - list:
+    - listitem "Previous Page":
+      - img
+    - listitem "1"
+    - listitem "2"
+    - listitem "3"
+    - listitem "Next 3 Pages": •••
+    - listitem "717"
+    - listitem "Next Page":
+      - img
+    - listitem
+- region "Notifications alt+T"
+- alert
+```
+
+# Test source
+
+```ts
+   1 |
+   2 | const { test, expect } = require('@playwright/test');
+   3 |
+   4 | test('test', async ({ page }) => {
+   5 |   // Variable to store the OTP
+   6 |   let otp = null;
+   7 |
+   8 |   // Listen for network responses
+   9 |   page.on('response', async (response) => {
+  10 |     const url = response.url(); // Get the URL of the response
+  11 |
+  12 |     // Check if the response URL matches the specific endpoint
+  13 |     if (url.includes('https://sau.eaglelionsystems.com/v1.0/chatbirrapi/cpsauth/otp/request/dashops')) {
+  14 |       console.log(`Response URL: ${url}`);
+  15 |
+  16 |       // Get the response body as JSON
+  17 |       try {
+  18 |         const responseBody = await response.json(); // Parse the response body as JSON
+  19 |         console.log('Response Body:', responseBody);
+  20 |
+  21 |         // Extract the OTP from the response body
+  22 |         if (responseBody.otpcode) {
+  23 |           otp = responseBody.otpcode; // Assuming the OTP is in a field named "otpcode"
+  24 |           console.log(`OTP: ${otp}`);
+  25 |         } else {
+  26 |           console.error('OTP not found in the response body.');
+  27 |         }
+  28 |       } catch (error) {
+  29 |         console.error('Failed to parse response body as JSON:', error);
+  30 |       }
+  31 |     }
+  32 |   });
+  33 |
+  34 |   // Navigate to the login page
+  35 |   await page.goto('https://sau-dbsa.vercel.app');
+  36 |
+  37 |   // Enter the username and request OTP
+  38 |   await page.getByPlaceholder('Enter Your username').click();
+  39 |   await page.getByPlaceholder('Enter Your username').fill('binim');
+  40 |   await page.getByRole('button', { name: 'Get OTP' }).click();
+  41 |
+  42 |   // Wait for the OTP to be captured (adjust timeout as needed)
+  43 |   await page.waitForTimeout(5000); // Wait for 5 seconds
+  44 |
+  45 |   // Check if the OTP was captured
+  46 |   if (!otp) {
+  47 |     throw new Error('OTP was not captured from the network response.');
+  48 |   }
+  49 |
+  50 |   // Split the OTP into individual digits
+  51 |   const otpDigits = otp.split('');
+  52 |   if (otpDigits.length !== 6) {
+  53 |     throw new Error('OTP must be 6 digits long.');
+  54 |   }
+  55 |
+  56 |   // Fill the OTP into the input boxes
+  57 |   for (let i = 0; i < 6; i++) {
+  58 |     const inputSelector = `.rizzui-pin-code-field:nth-child(${i + 1})`;
+  59 |     await page.locator(inputSelector).fill(otpDigits[i]);
+  60 |   }
+  61 |
+  62 |   // Click the "Next" button
+  63 |   await page.getByRole('button', { name: 'Next' }).click();
+  64 |
+  65 |   // Enter the password and sign in
+  66 |   await page.getByPlaceholder('Enter Your Password').click();
+  67 |   await page.getByPlaceholder('Enter Your Password').fill('Admin@7');
+  68 |   
+  69 |
+  70 |   await page.getByRole('button', { name: 'Sign In' }).click();
+  71 |   await page.getByRole('link', { name: 'Logs Logs See activity logs.' }).click();
+  72 |   await page.locator('header').getByRole('img').click();
+  73 |   await page.getByRole('button', { name: 'Users Users Filter and' }).click();
+  74 |   await page.getByRole('link', { name: 'icon CBS Users' }).click();
+  75 |   await page.getByRole('row', { name: '3612331166423 000 coco1' }).locator('div').nth(1).click();
+> 76 |   await page.getByRole('button', { name: 'Disable' }).click();
+     |                                                       ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  77 | });
+```

@@ -1,0 +1,5 @@
+Response URL: https://sau.eaglelionsystems.com/v1.0/chatbirrapi/cpsauth/otp/request/dashops
+Response Body: {
+  status: false,
+  message: 'active OTP: please try again in 29 seconds'
+}

@@ -1,0 +1,149 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: test
+- Location: C:\Users\ENVY\Documents\cps Automation\tests\authorized\Product_code.spec.js:4:1
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole('row', { name: 'Transfer to Other Bank OBTS' }).getByRole('img')
+
+    at C:\Users\ENVY\Documents\cps Automation\tests\authorized\Product_code.spec.js:78:89
+```
+
+# Page snapshot
+
+```yaml
+- main:
+  - heading "Dashen Bank Super App Central Dashboard Portal" [level=4]
+  - text: B
+  - paragraph: binim
+  - text: MAKER
+  - img
+  - img
+  - paragraph: Product Code
+  - link "Back to Home"
+  - text: "Total Product Count:"
+  - paragraph: "0"
+  - img
+  - textbox: obtss
+  - button:
+    - img
+  - button:
+    - img
+  - text: Status
+  - button "Status CB":
+    - text: CB
+    - img
+  - table:
+    - rowgroup:
+      - row "Product Name Product Code Service Fee Transaction Code VAT Transaction Code Action":
+        - columnheader "Product Name"
+        - columnheader "Product Code"
+        - columnheader "Service Fee Transaction Code"
+        - columnheader "VAT Transaction Code"
+        - columnheader "Action"
+    - rowgroup:
+      - row "No Data":
+        - cell "No Data":
+          - img
+          - paragraph: No Data
+- region "Notifications alt+T"
+- alert
+```
+
+# Test source
+
+```ts
+   1 |
+   2 | const { test, expect } = require('@playwright/test');
+   3 |
+   4 | test('test', async ({ page }) => {
+   5 |   // Variable to store the OTP
+   6 |   let otp = null;
+   7 |
+   8 |   // Listen for network responses
+   9 |   page.on('response', async (response) => {
+  10 |     const url = response.url(); // Get the URL of the response
+  11 |
+  12 |     // Check if the response URL matches the specific endpoint
+  13 |     if (url.includes('https://sau.eaglelionsystems.com/v1.0/chatbirrapi/cpsauth/otp/request/dashops')) {
+  14 |       console.log(`Response URL: ${url}`);
+  15 |
+  16 |       // Get the response body as JSON
+  17 |       try {
+  18 |         const responseBody = await response.json(); // Parse the response body as JSON
+  19 |         console.log('Response Body:', responseBody);
+  20 |
+  21 |         // Extract the OTP from the response body
+  22 |         if (responseBody.otpcode) {
+  23 |           otp = responseBody.otpcode; // Assuming the OTP is in a field named "otpcode"
+  24 |           console.log(`OTP: ${otp}`);
+  25 |         } else {
+  26 |           console.error('OTP not found in the response body.');
+  27 |         }
+  28 |       } catch (error) {
+  29 |         console.error('Failed to parse response body as JSON:', error);
+  30 |       }
+  31 |     }
+  32 |   });
+  33 |
+  34 |   // Navigate to the login page
+  35 |   await page.goto('https://sau-dbsa.vercel.app');
+  36 |
+  37 |   // Enter the username and request OTP
+  38 |   await page.getByPlaceholder('Enter Your username').click();
+  39 |   await page.getByPlaceholder('Enter Your username').fill('binim');
+  40 |   await page.getByRole('button', { name: 'Get OTP' }).click();
+  41 |
+  42 |   // Wait for the OTP to be captured (adjust timeout as needed)
+  43 |   await page.waitForTimeout(5000); // Wait for 5 seconds
+  44 |
+  45 |   // Check if the OTP was captured
+  46 |   if (!otp) {
+  47 |     throw new Error('OTP was not captured from the network response.');
+  48 |   }
+  49 |
+  50 |   // Split the OTP into individual digits
+  51 |   const otpDigits = otp.split('');
+  52 |   if (otpDigits.length !== 6) {
+  53 |     throw new Error('OTP must be 6 digits long.');
+  54 |   }
+  55 |
+  56 |   // Fill the OTP into the input boxes
+  57 |   for (let i = 0; i < 6; i++) {
+  58 |     const inputSelector = `.rizzui-pin-code-field:nth-child(${i + 1})`;
+  59 |     await page.locator(inputSelector).fill(otpDigits[i]);
+  60 |   }
+  61 |
+  62 |   // Click the "Next" button
+  63 |   await page.getByRole('button', { name: 'Next' }).click();
+  64 |
+  65 |   // Enter the password and sign in
+  66 |   await page.getByPlaceholder('Enter Your Password').click();
+  67 |   await page.getByPlaceholder('Enter Your Password').fill('Admin@7');
+  68 |   
+  69 |
+  70 |   await page.getByRole('button', { name: 'Sign In' }).click();
+  71 |   await page.getByRole('link', { name: 'Product Code Product Code' }).click();
+  72 |   await page.getByPlaceholder('Search product by name or code').click();
+  73 |   await page.getByPlaceholder('Search product by name or code').fill('obts');
+  74 |   await page.getByRole('button', { name: 'Status CB' }).click();
+  75 |   await page.getByRole('option', { name: 'IFB' }).click();
+  76 |   await page.getByRole('button', { name: 'Status IFB' }).click();
+  77 |   await page.getByRole('option', { name: 'CB' }).click();
+> 78 |   await page.getByRole('row', { name: 'Transfer to Other Bank OBTS' }).getByRole('img').click();
+     |                                                                                         ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  79 |   await page.getByPlaceholder('Enter Service Fee Code').click();
+  80 |   await page.getByPlaceholder('Enter Service Fee Code').fill('SFO');
+  81 |   await page.getByRole('button', { name: 'Edit Product Code' }).click();
+  82 | });
+```

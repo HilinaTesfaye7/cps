@@ -75,4 +75,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button').nth(2).click();
   await page.getByRole('row', { name: '15381654719776 audit cococ' }).locator('div').nth(1).click();
   await page.getByRole('button', { name: 'Disable' }).click();
+  await page.waitForTimeout(3000);
 });

@@ -73,13 +73,15 @@ await page.getByRole('link', { name: 'icon Wallets' }).click();
 await page.locator('path').nth(4).click();
 
 // Click the "Enable" button inside the modal using XPath
-await page.getByRole('button', { name: 'Enable' }).click();
-await page.locator('[id="headlessui-dialog-\\:rb\\:"]').getByRole('button', { name: 'Enable' }).click();
+await page.getByRole('button', { name: 'Disable' }).click({ force: true });
 
+// Click another button inside the modal
+await page.locator("//button[@type='submit']").click();
+await page.waitForTimeout(5000);
 });
-
-
-
+//button[@type='submit']
+//await page.locator("(//button[text()='Approve'])[1]").click();
+//button[@class='bg-primary/5 p-2 w-full text-start']
 //disable
  // await page.getByRole('button', { name: 'Disable' }).click();
  // await page.locator('[id="headlessui-dialog-\\:rb\\:"]').getByRole('button', { name: 'Disable' }).click();

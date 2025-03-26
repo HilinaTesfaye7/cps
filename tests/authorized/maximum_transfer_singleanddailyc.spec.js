@@ -68,14 +68,22 @@ test('test', async ({ page }) => {
   
 
   await page.getByRole('button', { name: 'Sign In' }).click();
+  await page.getByPlaceholder('Search by customer ID, phone').click();
+  await page.getByPlaceholder('Search by customer ID, phone').fill('UPDATE_SERVICE_RULE');
+  await page.getByPlaceholder('Search by customer ID, phone').press('Enter');
+  await page.waitForTimeout(3000); 
+  await page.locator("(//button[text()='Approve'])[1]").click();
+  await page.waitForTimeout(3000); 
+  await page.locator("//button[@type='submit']").click();
+  await page.waitForTimeout(3000);
 // Wait for the first "Approve" button to become visible and clickable
-const approveButton = page.getByRole('button', { name: 'Approve', exact: true });
-await approveButton.waitFor({ state: 'visible' });
-await approveButton.click();
+//const approveButton = page.getByRole('button', { name: 'Approve', exact: true });
+//await approveButton.waitFor({ state: 'visible' });
+//await approveButton.click();
 
 // Wait for the modal containing the second "Approve" button to appear
-const modalApproveButton = page.locator('[id="headlessui-dialog-\\:r4\\:"]').getByRole('button', { name: 'Approve' });
-await modalApproveButton.waitFor({ state: 'visible' });
-await modalApproveButton.click();
-
+//const modalApproveButton = page.locator('[id="headlessui-dialog-\\:r4\\:"]').getByRole('button', { name: 'Approve' });
+//await modalApproveButton.waitFor({ state: 'visible' });
+//await modalApproveButton.click();
+//await page.waitForTimeout(5000);
 });

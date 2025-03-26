@@ -78,7 +78,8 @@ test('test', async ({ page }) => {
   await page.getByRole('button').nth(1).click();
   await page.getByRole('row', { name: 'SFC-43464560949018279653' }).getByRole('img').click();
   await page.getByPlaceholder('Daily transfer limit').click();
-  await page.getByPlaceholder('Daily transfer limit').fill('1000000');
+  await page.getByPlaceholder('Daily transfer limit').fill('10000000');
   await page.getByRole('button', { name: 'Update Cap' }).click();
   await page.getByRole('button', { name: 'Update Cap' }).click();
+  await page.waitForTimeout(5000);
 });

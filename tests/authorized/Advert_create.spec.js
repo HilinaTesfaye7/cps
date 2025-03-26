@@ -86,6 +86,6 @@ console.log('✅ Image uploaded successfully');
  // await page.locator('[id="headlessui-dialog-\\:rq\\:"]').getByRole('button', { name: 'Create Advert' }).click();
 
 await page.locator("//form//button[text()='Create Advert']").click();
- await page.waitForTimeout(5000);  
+ await page.waitForTimeout(3000);  
 
 });

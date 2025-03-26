@@ -71,6 +71,6 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Password Rule Password Rule' }).click();
   await page.getByRole('row', { name: 'Password Expiry 100 days Sun, Mar 16' }).getByRole('img').click();
   await page.getByRole('spinbutton', { name: 'Days' }).click();
-  await page.getByRole('spinbutton', { name: 'Days' }).fill('1000');
+  await page.getByRole('spinbutton', { name: 'Days' }).fill('10000');
   await page.getByRole('button', { name: 'Update' }).click();
 });

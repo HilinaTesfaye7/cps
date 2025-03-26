@@ -68,6 +68,13 @@ test('test', async ({ page }) => {
   
 
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.getByRole('button', { name: 'Approve', exact: true }).click();
-  await page.locator('[id="headlessui-dialog-\\:r4\\:"]').getByRole('button', { name: 'Approve' }).click();
+  await page.getByPlaceholder('Search by customer ID, phone').click();
+  await page.getByPlaceholder('Search by customer ID, phone').fill('DISABLE_USER');
+  await page.getByPlaceholder('Search by customer ID, phone').press('Enter');
+  await page.waitForTimeout(3000); 
+  await page.locator("(//button[text()='Reject'])[1]").click();
+  await page.getByPlaceholder('Screen reader only').fill('jok');
+  await page.waitForTimeout(3000); 
+  await page.locator("//button[@type='submit']").click();
+  await page.waitForTimeout(3000);
 });

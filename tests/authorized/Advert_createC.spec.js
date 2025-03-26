@@ -68,8 +68,18 @@ test('test', async ({ page }) => {
   
 
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.getByRole('button', { name: 'Approve', exact: true }).click();
-   
-await page.locator('[id="headlessui-dialog-\\:r4\\:"]').getByRole('button', { name: 'Approve' }).click();
-await page.waitForTimeout(5000);
+  await page.getByPlaceholder('Search by customer ID, phone').click();
+  await page.getByPlaceholder('Search by customer ID, phone').fill('create_advert');
+  await page.getByPlaceholder('Search by customer ID, phone').press('Enter');
+  await page.waitForTimeout(3000); 
+  await page.locator("(//button[text()='Approve'])[1]").click();
+  await page.waitForTimeout(3000); 
+  await page.locator("//button[@type='submit']").click();
+  await page.waitForTimeout(3000);
+  
 });
+
+//button[@type='submit']
+//button[@type="submit"]
+//
+//<button class="rizzui-button inline-flex font-medium items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 transition-colors duration-200 px-4 py-2 text-sm h-10 rounded-md border border-transparent focus-visible:ring-offset-2 bg-green hover:enabled:bg-green-dark focus-visible:ring-green/30 text-white whitespace-nowrap" type="submit" fdprocessedid="qyb3c4">Approve</button>

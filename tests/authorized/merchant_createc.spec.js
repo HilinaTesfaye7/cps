@@ -36,7 +36,7 @@ test('test', async ({ page }) => {
 
   // Enter the username and request OTP
   await page.getByPlaceholder('Enter Your username').click();
-  await page.getByPlaceholder('Enter Your username').fill('binim');
+  await page.getByPlaceholder('Enter Your username').fill('binic');
   await page.getByRole('button', { name: 'Get OTP' }).click();
 
   // Wait for the OTP to be captured (adjust timeout as needed)
@@ -78,4 +78,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Reject' }).click();
   await page.getByRole('heading', { name: '1611' }).click();
   await page.getByRole('button', { name: 'Reject' }).click();
+  await page.waitForTimeout(5000);
 });

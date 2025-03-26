@@ -110,4 +110,5 @@ test('test', async ({ page }) => {
   await page.locator('input[name="userEmail"]').fill('kiya@gmail.com');
   await page.getByText('Dashen Bank Super App Central Dashboard PortalBbinimMAKER').click();
   await page.getByRole('button', { name: 'Create' }).click();
+  await page.waitForTimeout(5000);
 });

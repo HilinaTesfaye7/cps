@@ -1,0 +1,103 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: test
+- Location: C:\Users\ENVY\Documents\cps Automation\tests\authorized\mini_app.spec.js:3:5
+
+# Error details
+
+```
+Error: locator.fill: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole('textbox', { name: 'Password' })
+
+    at C:\Users\ENVY\Documents\cps Automation\tests\authorized\mini_app.spec.js:15:57
+```
+
+# Page snapshot
+
+```yaml
+- img "Sign In Thumbnail"
+- heading "Central Portal Service" [level=1]
+- img "logo"
+- text: Username
+- textbox "Resend OTP": binim
+- button "Resend OTP" [disabled]
+- spinbutton
+- spinbutton
+- spinbutton
+- spinbutton
+- spinbutton
+- spinbutton
+- text: OTP is required
+- paragraph: 1:33 Min
+- button "Next"
+- paragraph: Copyright © 2024 Dashen Super App | Dashen Bank SC. All rights reserved.
+- region "Notifications alt+T"
+- alert
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '@playwright/test';
+   2 |
+   3 | test('test', async ({ page }) => {
+   4 |   await page.goto('https://sau-dbsa.vercel.app/auth/signin?callbackUrl=%2Fmerchants%2Freject%2F67de16ee6c60850a40d5c3ef');
+   5 |   await page.locator('span').first().click();
+   6 |   await page.getByRole('textbox', { name: 'Get OTP' }).fill('binim');
+   7 |   await page.getByText('LoginWelcome to Dashen bank centeral portal service!UsernameGet OTPOTP').click({
+   8 |     button: 'right'
+   9 |   });
+  10 |   await page.getByRole('button', { name: 'Get OTP' }).click();
+  11 |   await page.locator('.rizzui-pin-code-field').first().click();
+  12 |   await page.locator('input:nth-child(6)').click();
+  13 |   await page.getByRole('button', { name: 'Next' }).click();
+  14 |   await page.locator('span').nth(1).click();
+> 15 |   await page.getByRole('textbox', { name: 'Password' }).fill('Admin@7');
+     |                                                         ^ Error: locator.fill: Test timeout of 30000ms exceeded.
+  16 |   await page.getByRole('button').filter({ hasText: /^$/ }).click();
+  17 |   await page.getByRole('button', { name: 'Sign In' }).click();
+  18 |   await page.getByRole('button', { name: 'Mini Apps Mini Apps Create' }).click();
+  19 |   await page.getByRole('link', { name: 'icon Mini Apps' }).click();
+  20 |   await page.getByRole('button', { name: 'Add Mini App' }).click();
+  21 |   await page.locator('div').filter({ hasText: /^App Name\*$/ }).locator('span').nth(1).click();
+  22 |   await page.getByPlaceholder('Enter App Name').fill('ap');
+  23 |   await page.locator('div').filter({ hasText: /^Mini App Type$/ }).nth(3).click();
+  24 |   await page.getByRole('option', { name: 'URL' }).click();
+  25 |   await page.getByRole('button', { name: 'Type Select' }).click();
+  26 |   await page.getByRole('option', { name: 'ALL' }).locator('span').click();
+  27 |   await page.locator('.css-1c8xuuf').click();
+  28 |   await page.getByRole('option', { name: 'QA TESTER' }).click();
+  29 |   await page.getByPlaceholder('Enter URL').click();
+  30 |   await page.getByPlaceholder('Enter URL').fill('www.google.com');
+  31 |   await page.getByPlaceholder('Enter Product Code').click();
+  32 |   await page.getByPlaceholder('Enter Product Code').fill('ert');
+  33 |   await page.getByPlaceholder('Enter VAT Code').click();
+  34 |   await page.getByPlaceholder('Enter VAT Code').fill('ert');
+  35 |   await page.getByPlaceholder('Enter Service Fee Code').click();
+  36 |   await page.getByPlaceholder('Enter Service Fee Code').fill('ert');
+  37 |   await page.locator('path:nth-child(4)').click();
+  38 |   
+  39 |   const filePath = 'C:\\Users\\ENVY\\Documents\\cps\\kk.png'; // Use double backslashes but no extra quotes around the path
+  40 | const fileChooserPromise = page.waitForEvent('filechooser');
+  41 | await page.getByText('Drop or select file').click();
+  42 | const fileChooser = await fileChooserPromise;
+  43 | await fileChooser.setFiles(filePath);
+  44 | console.log('✅ Image uploaded successfully');
+  45 |
+  46 |   await page.locator('[id="headlessui-dialog-\\:r4\\:"]').getByRole('button', { name: 'Add Mini App' }).click();
+  47 |   await page.getByPlaceholder('Enter URL').click();
+  48 |   await page.locator('[id="headlessui-dialog-overlay-\\:r5\\:"]').click();
+  49 |   await page.getByPlaceholder('Enter URL').click();
+  50 |   await page.getByPlaceholder('Enter URL').fill('');
+  51 |   await page.getByPlaceholder('Enter URL').click();
+  52 |   await page.getByPlaceholder('Enter URL').fill('https://sau-dbsa.vercel.app/mini-app');
+  53 |   await page.locator('[id="headlessui-dialog-overlay-\\:r5\\:"]').click();
+  54 | });
+```

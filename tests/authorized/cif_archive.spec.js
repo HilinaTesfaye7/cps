@@ -71,6 +71,6 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'CIFs Archive Time CIFs' }).click();
   await page.getByRole('row', { name: 'Archive inactive users 90' }).getByRole('img').click();
   await page.getByRole('spinbutton', { name: 'Days' }).click();
-  await page.getByRole('spinbutton', { name: 'Days' }).fill('912');
+  await page.getByRole('spinbutton', { name: 'Days' }).fill('91236');
   await page.getByRole('button', { name: 'Update' }).click();
 });
