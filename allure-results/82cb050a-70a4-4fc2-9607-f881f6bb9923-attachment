@@ -1,0 +1,154 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: test
+- Location: C:\Users\ENVY\Documents\cps Automation\tests\authorized\service_fee_edit.spec.js:4:1
+
+# Error details
+
+```
+TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator('a:text(\'Edit\')') to be visible
+
+    at C:\Users\ENVY\Documents\cps Automation\tests\authorized\service_fee_edit.spec.js:78:13
+```
+
+# Page snapshot
+
+```yaml
+- main:
+  - heading "Dashen Bank Super App Central Dashboard Portal" [level=4]
+  - text: B
+  - paragraph: binim
+  - text: MAKER
+  - img
+  - img
+  - paragraph: Service Fee
+  - link "Back to Home"
+  - heading "Add Service Fee" [level=4]
+  - paragraph: Add Service details and create with lists.
+  - text: Service Name
+  - button "Service Name Select service name":
+    - text: Select service name
+    - img
+  - text: Service Type
+  - button "Service Type Select service name":
+    - text: Select service name
+    - img
+  - text: Payment Type *
+  - log
+  - text: Select payment type
+  - combobox
+  - button "Add another tier":
+    - img
+    - text: Add another tier
+  - button "> Above some Value"
+  - text: Above Amount
+  - textbox "ETB" [disabled]
+  - text: ETB Service Fee
+  - spinbutton
+  - button "Cancel"
+  - button "Create" [disabled]
+- region "Notifications alt+T"
+- alert
+```
+
+# Test source
+
+```ts
+   1 |
+   2 | const { test, expect } = require('@playwright/test');
+   3 |
+   4 | test('test', async ({ page }) => {
+   5 |   // Variable to store the OTP
+   6 |   let otp = null;
+   7 |
+   8 |   // Listen for network responses
+   9 |   page.on('response', async (response) => {
+  10 |     const url = response.url(); // Get the URL of the response
+  11 |
+  12 |     // Check if the response URL matches the specific endpoint
+  13 |     if (url.includes('https://sau.eaglelionsystems.com/v1.0/chatbirrapi/cpsauth/otp/request/dashops')) {
+  14 |       console.log(`Response URL: ${url}`);
+  15 |
+  16 |       // Get the response body as JSON
+  17 |       try {
+  18 |         const responseBody = await response.json(); // Parse the response body as JSON
+  19 |         console.log('Response Body:', responseBody);
+  20 |
+  21 |         // Extract the OTP from the response body
+  22 |         if (responseBody.otpcode) {
+  23 |           otp = responseBody.otpcode; // Assuming the OTP is in a field named "otpcode"
+  24 |           console.log(`OTP: ${otp}`);
+  25 |         } else {
+  26 |           console.error('OTP not found in the response body.');
+  27 |         }
+  28 |       } catch (error) {
+  29 |         console.error('Failed to parse response body as JSON:', error);
+  30 |       }
+  31 |     }
+  32 |   });
+  33 |
+  34 |   // Navigate to the login page
+  35 |   await page.goto('https://sau-dbsa.vercel.app');
+  36 |
+  37 |   // Enter the username and request OTP
+  38 |   await page.getByPlaceholder('Enter Your username').click();
+  39 |   await page.getByPlaceholder('Enter Your username').fill('binim');
+  40 |   await page.getByRole('button', { name: 'Get OTP' }).click();
+  41 |
+  42 |   // Wait for the OTP to be captured (adjust timeout as needed)
+  43 |   await page.waitForTimeout(5000); // Wait for 5 seconds
+  44 |
+  45 |   // Check if the OTP was captured
+  46 |   if (!otp) {
+  47 |     throw new Error('OTP was not captured from the network response.');
+  48 |   }
+  49 |
+  50 |   // Split the OTP into individual digits
+  51 |   const otpDigits = otp.split('');
+  52 |   if (otpDigits.length !== 6) {
+  53 |     throw new Error('OTP must be 6 digits long.');
+  54 |   }
+  55 |
+  56 |   // Fill the OTP into the input boxes
+  57 |   for (let i = 0; i < 6; i++) {
+  58 |     const inputSelector = `.rizzui-pin-code-field:nth-child(${i + 1})`;
+  59 |     await page.locator(inputSelector).fill(otpDigits[i]);
+  60 |   }
+  61 |
+  62 |   // Click the "Next" button
+  63 |   await page.getByRole('button', { name: 'Next' }).click();
+  64 |
+  65 |   // Enter the password and sign in
+  66 |   await page.getByPlaceholder('Enter Your Password').click();
+  67 |   await page.getByPlaceholder('Enter Your Password').fill('Admin@7');
+  68 |   
+  69 |   await page.getByRole('button', { name: 'Sign In' }).click();
+  70 |   await page.getByRole('link', { name: 'Rule Engine Rule Engine' }).click();
+  71 |   await page.getByRole('link', { name: 'Service Fees Service Fees Set' }).click();
+  72 |   await page.getByPlaceholder('Search service by name').click();
+  73 |   await page.getByPlaceholder('Search service by name').fill('transfer to dashen bank');
+  74 |   await page.getByRole('button').nth(2).click();
+  75 |   await page.getByRole('row', { name: 'SFC-43464560949018279653' }).getByRole('link').click();
+  76 |   await page.getByRole('img').nth(2).click();
+  77 |  // await page.getByRole('link', { name: 'Edit' }).click();
+> 78 |  await page.waitForSelector("a:text('Edit')", { timeout: 5000 });
+     |             ^ TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+  79 | await page.locator("a:text('Edit')").first().click();
+  80 |
+  81 |
+  82 |   await page.getByRole('button', { name: 'Add another tier' }).click();
+  83 |   await page.locator('input[name="tier\\.4\\.max"]').click();
+  84 |   await page.locator('input[name="tier\\.4\\.max"]').fill('10000000000');
+  85 |   await page.locator('div').filter({ hasText: /^Tier 5Min AmountETBMax AmountETBService FeeRemove$/ }).locator('span').nth(4).click();
+  86 |   await page.locator('input[name="tier\\.4\\.feeAmount"]').fill('2');
+  87 |   await page.getByRole('button', { name: 'Update' }).click();
+  88 | });
+```

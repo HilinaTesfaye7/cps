@@ -1,0 +1,191 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: test
+- Location: C:\Users\ENVY\Documents\cps Automation\tests\authorized\Amount_based_auth.spec.js:4:1
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole('button', { name: 'Update' })
+    - locator resolved to <button disabled type="submit" class="rizzui-button inline-flex font-medium items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 transition-colors duration-200 px-4 py-2 text-sm h-10 rounded-md border focus-visible:ring-offset-2 hover:enabled:bg-primary-dark focus-visible:ring-primary/30 cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400">Update</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not stable
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not stable
+    - retrying click action
+      - waiting 100ms
+    36 × waiting for element to be visible, enabled and stable
+       - element is not enabled
+     - retrying click action
+       - waiting 500ms
+
+    at C:\Users\ENVY\Documents\cps Automation\tests\authorized\Amount_based_auth.spec.js:73:54
+```
+
+# Page snapshot
+
+```yaml
+- main:
+  - heading "Dashen Bank Super App Central Dashboard Portal" [level=4]
+  - text: B
+  - paragraph: binim
+  - text: MAKER
+  - img
+  - img
+  - paragraph: Amount - Based Authentication
+  - link "Back to Home"
+  - heading "Amount Based Auth" [level=2]
+  - text: Tier 1
+  - img
+  - paragraph: Min
+  - paragraph: "1"
+  - paragraph: Max
+  - paragraph: 1,000,000,000,000
+  - paragraph: Authentication method
+  - paragraph: Free
+  - paragraph: pin
+  - paragraph: otp+pin
+  - text: Tier 2
+  - img
+  - paragraph: Min
+  - paragraph: "> 1,000"
+  - paragraph: Max
+  - paragraph: 25,000
+  - paragraph: Authentication method
+  - paragraph: Free
+  - paragraph: pin
+  - paragraph: otp+pin
+  - text: Tier 3
+  - paragraph: Above
+  - paragraph: "> 25,000"
+  - paragraph: Authentication method
+  - paragraph: Free
+  - paragraph: pin
+  - paragraph: otp+pin
+- region "Notifications alt+T"
+- alert
+- dialog:
+  - button "Sr Only"
+  - heading "Edit Authentication Tier" [level=2]
+  - paragraph: Edit Service amount ranges and give authentication type.
+  - text: Min Amount
+  - spinbutton [disabled]: "1"
+  - text: Max Amount
+  - spinbutton: "1000000000000"
+  - heading "Edit Tier Range" [level=2]
+  - paragraph: Authentication Method
+  - paragraph:
+    - text: Free
+    - checkbox [checked]
+    - img
+  - paragraph:
+    - text: PIN
+    - checkbox
+    - img
+  - paragraph:
+    - text: OTP + PIN
+    - checkbox
+    - img
+  - button "Cancel"
+  - button "Update" [disabled]
+```
+
+# Test source
+
+```ts
+   1 |
+   2 | const { test, expect } = require('@playwright/test');
+   3 |
+   4 | test('test', async ({ page }) => {
+   5 |   // Variable to store the OTP
+   6 |   let otp = null;
+   7 |
+   8 |   // Listen for network responses
+   9 |   page.on('response', async (response) => {
+  10 |     const url = response.url(); // Get the URL of the response
+  11 |
+  12 |     // Check if the response URL matches the specific endpoint
+  13 |     if (url.includes('https://sau.eaglelionsystems.com/v1.0/chatbirrapi/cpsauth/otp/request/dashops')) {
+  14 |       console.log(`Response URL: ${url}`);
+  15 |
+  16 |       // Get the response body as JSON
+  17 |       try {
+  18 |         const responseBody = await response.json(); // Parse the response body as JSON
+  19 |         console.log('Response Body:', responseBody);
+  20 |
+  21 |         // Extract the OTP from the response body
+  22 |         if (responseBody.otpcode) {
+  23 |           otp = responseBody.otpcode; // Assuming the OTP is in a field named "otpcode"
+  24 |           console.log(`OTP: ${otp}`);
+  25 |         } else {
+  26 |           console.error('OTP not found in the response body.');
+  27 |         }
+  28 |       } catch (error) {
+  29 |         console.error('Failed to parse response body as JSON:', error);
+  30 |       }
+  31 |     }
+  32 |   });
+  33 |
+  34 |   // Navigate to the login page
+  35 |   await page.goto('https://sau-dbsa.vercel.app');
+  36 |
+  37 |   // Enter the username and request OTP
+  38 |   await page.getByPlaceholder('Enter Your username').click();
+  39 |   await page.getByPlaceholder('Enter Your username').fill('binim');
+  40 |   await page.getByRole('button', { name: 'Get OTP' }).click();
+  41 |
+  42 |   // Wait for the OTP to be captured (adjust timeout as needed)
+  43 |   await page.waitForTimeout(5000); // Wait for 5 seconds
+  44 |
+  45 |   // Check if the OTP was captured
+  46 |   if (!otp) {
+  47 |     throw new Error('user not found');
+  48 |   }
+  49 |
+  50 |   // Split the OTP into individual digits
+  51 |   const otpDigits = otp.split('');
+  52 |   if (otpDigits.length !== 6) {
+  53 |     throw new Error('OTP must be 6 digits long.');
+  54 |   }
+  55 |
+  56 |   // Fill the OTP into the input boxes
+  57 |   for (let i = 0; i < 6; i++) {
+  58 |     const inputSelector = `.rizzui-pin-code-field:nth-child(${i + 1})`;
+  59 |     await page.locator(inputSelector).fill(otpDigits[i]);
+  60 |   }
+  61 |
+  62 |   // Click the "Next" button
+  63 |   await page.getByRole('button', { name: 'Next' }).click();
+  64 |
+  65 |   // Enter the password and sign in
+  66 |   await page.getByPlaceholder('Enter Your Password').click();
+  67 |   await page.getByPlaceholder('Enter Your Password').fill('Admin@7');
+  68 |   await page.getByRole('button', { name: 'Sign In' }).click();
+  69 |   await page.getByRole('link', { name: 'Rule Engine Rule Engine' }).click();
+  70 |   await page.getByRole('link', { name: 'Amount - Based Auth Amount -' }).click();
+  71 |   await page.locator('div').filter({ hasText: 'Amount - Based AuthenticationBack to HomeAmount Based AuthTier 1' }).locator('path').nth(1).click();
+  72 |   await page.getByPlaceholder('Max Amount').fill('1000000000000');
+> 73 |   await page.getByRole('button', { name: 'Update' }).click();
+     |                                                      ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  74 |   await page.waitForTimeout(5000);
+  75 | });
+  76 |
+  77 |
+  78 |
+  79 |
+  80 |
+  81 |
+  82 |
+  83 |
+```

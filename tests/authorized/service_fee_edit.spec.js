@@ -44,7 +44,7 @@ test('test', async ({ page }) => {
 
   // Check if the OTP was captured
   if (!otp) {
-    throw new Error('user not found');
+    throw new Error('OTP was not captured from the network response.');
   }
 
   // Split the OTP into individual digits
@@ -65,38 +65,40 @@ test('test', async ({ page }) => {
   // Enter the password and sign in
   await page.getByPlaceholder('Enter Your Password').click();
   await page.getByPlaceholder('Enter Your Password').fill('Admin@7');
+  
   await page.getByRole('button', { name: 'Sign In' }).click();
-
   await page.getByRole('link', { name: 'Rule Engine Rule Engine' }).click();
   await page.getByRole('link', { name: 'Service Fees Service Fees Set' }).click();
   await page.getByPlaceholder('Search service by name').click();
   await page.getByPlaceholder('Search service by name').fill('transfer to dashen bank');
-  await page.getByPlaceholder('Search service by name').press('Enter');
   await page.getByRole('button').nth(2).click();
   await page.getByRole('row', { name: 'SFC-43464560949018279653' }).getByRole('link').click();
   await page.getByRole('img').nth(2).click();
-  await page.waitForSelector("//a[contains(@class, 'text-primary')]");
-await page.locator("//a[contains(@class, 'text-primary')]").click();
-//const count = await page.locator("//button[contains(., 'Add another tier')]").count();
-//console.log(`Found ${count} buttons.`);
 
- // await page.locator("//button[normalize-space()='Add another tier']").click();
+  //await page.waitForSelector("//a[contains(., 'Edit')]", { timeout: 5000 });
+  //await page.locator("//a[contains(., 'Edit')]").click();
   
 
-  await page.waitForTimeout(5000);
-  await page.locator("//input[@name='tier.3.max']").click();
-  await page.waitForTimeout(5000);
-  await page.locator('input[name="tier\\.3\\.max"]').fill('5000000000');
-  await page.locator("//input[@name='tier.3.feeAmount']").click();
-  await page.locator("//input[@name='tier.3.feeAmount']").fill('1');
+
+  await page.getByRole('button', { name: 'Add another tier' }).click();
+  //await page.locator("//input[@name='tier.4.max']").click();
+  await page.locator("//input[starts-with(@name, 'tier.') and contains(@name, '.max')]").click();
+
+
+  await page.locator("xpath=//input[contains(@name, 'tier.4.max')]", { state: "visible" });
+
+  const isEditable = await page.locator("input[name='tier.3.max']").isEditable();
+  console.log("Is Editable:", isEditable);
+  
+
+
+  
+  
+  
+  await page.locator('div').filter({ hasText: /^Tier 5Min AmountETBMax AmountETBService FeeRemove$/ }).locator('span').nth(4).click();
+  await page.locator('input[name="tier\\.4\\.feeAmount"]').fill('2');
   await page.getByRole('button', { name: 'Update' }).click();
-  await page.waitForTimeout(5000);
 });
-
-//a[@class='text-base flex items-center gap-2 text-primary bg-white group hover:text-black w-full p-2 rounded-md cursor-pointer']
-//a[contains(text(),'Edit')]
-//a[svg]//path[@fill='#D9D9D9']
-
-//button[normalize-space()='Add another tier']
-//input[@name='tier.3.max']
-//input[@name='tier.3.feeAmount']
+//input[@name='tier.4.max']
+//input[@name='tier.4.feeAmount']
+//input[@name='tier.4.max'
